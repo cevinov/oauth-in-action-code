@@ -22,7 +22,8 @@ app.get('/', function (req, res) {
 // Where use handles all HTTP methods, in this case it's used to serve static files in /
 app.use('/', express.static('files/client'));
 
-var server = app.listen(9000, 'localhost', function () {
+// Listen all interfaces 0.0.0.0
+var server = app.listen(9000, '0.0.0.0', function () {
   var host = server.address().address;
   var port = server.address().port;
   console.log('OAuth Client is listening at http://%s:%s', host, port);
