@@ -3,10 +3,13 @@ var bodyParser = require('body-parser');
 var cons = require('consolidate');
 var __ = require('underscore');
 __.string = require('underscore.string');
-
 var app = express();
 
+// Middleware to handle raw JSON data from the request body and transforms it into a JavaScript object
 app.use(bodyParser.json());
+
+// Help parsing this type of data application/x-www-form-urlencoded
+// true means that nested objects and arrays can be parsed from the URL-encoded data.
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.engine('html', cons.underscore);

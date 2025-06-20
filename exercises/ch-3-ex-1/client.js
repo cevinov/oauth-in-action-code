@@ -20,12 +20,7 @@ var authServer = {
 	tokenEndpoint: 'http://localhost:9001/token'
 };
 
-// client information
-
-
-/*
- * Add the client information in here
- */
+// Add the client information in here
 var client = {
 	"client_id": "",
 	"client_secret": "",
