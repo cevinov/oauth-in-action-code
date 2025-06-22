@@ -81,7 +81,8 @@ app.get('/callback', function(req, res){
 				grant_type: 'authorization_code',
 				code: code,
 				redirect_uri: client.redirect_uris[0]
-			});
+	});
+
 	var headers = {
 		'Content-Type': 'application/x-www-form-urlencoded',
 		'Authorization': 'Basic ' + encodeClientCredentials(client.client_id, client.client_secret)
@@ -143,6 +144,7 @@ app.get('/fetch_resource', function(req, res) {
 	
 });
 
+
 var refreshAccessToken = function(req, res) {
 
 	/*
@@ -152,18 +154,26 @@ var refreshAccessToken = function(req, res) {
 };
 
 var buildUrl = function(base, options, hash) {
+	// Break down the base URL string into its constituent parts
 	var newUrl = url.parse(base, true);
+
+	// To build a new query string from the options object, the old search property is deleted to prevent conflicts
 	delete newUrl.search;
+
+	// Check if the original base URL had no query string
 	if (!newUrl.query) {
 		newUrl.query = {};
 	}
+
+	// For each key-value pair in options, it adds a corresponding property to the newUrl.query object.
 	__.each(options, function(value, key, list) {
 		newUrl.query[key] = value;
 	});
 	if (hash) {
 		newUrl.hash = hash;
 	}
-	
+
+	// Reassembles its parts back into a single, properly formatted URL string.
 	return url.format(newUrl);
 };
 
@@ -173,7 +183,7 @@ var encodeClientCredentials = function(clientId, clientSecret) {
 
 app.use('/', express.static('files/client'));
 
-var server = app.listen(9000, 'localhost', function () {
+var server = app.listen(9000, '0.0.0.0', function () {
   var host = server.address().address;
   var port = server.address().port;
   console.log('OAuth Client is listening at http://%s:%s', host, port);

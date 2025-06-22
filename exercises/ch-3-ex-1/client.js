@@ -39,6 +39,7 @@ app.get('/', function (req, res) {
 });
 
 app.get('/authorize', function(req, res){
+	console.log("authorize");
 
 	/*
 	 * Send the user to the authorization server

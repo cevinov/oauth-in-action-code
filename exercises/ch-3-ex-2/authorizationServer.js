@@ -256,7 +256,7 @@ nosql.clear();
 // inject our pre-baked refresh token
 setTimeout(() => nosql.insert({ refresh_token: 'j2r3oj32r23rmasd98uhjrk2o3i', client_id: 'oauth-client-1', scope: 'foo bar' }), 5000);
 
-var server = app.listen(9001, 'localhost', function () {
+var server = app.listen(9001, '0.0.0.0', function () {
   var host = server.address().address;
   var port = server.address().port;
 
