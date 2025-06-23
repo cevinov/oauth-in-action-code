@@ -44,6 +44,7 @@ var getClient = function(clientId) {
 
 app.get('/', function(req, res) {
 	res.render('index', {clients: clients, authServer: authServer});
+	console.log("Clients:", clients);
 });
 
 app.get("/authorize", function(req, res){
@@ -59,7 +60,6 @@ app.get("/authorize", function(req, res){
 		res.render('error', {error: 'Invalid redirect URI'});
 		return;
 	} else {
-		
 		var rscope = req.query.scope ? req.query.scope.split(' ') : undefined;
 		var cscope = client.scope ? client.scope.split(' ') : undefined;
 		if (__.difference(rscope, cscope).length > 0) {
