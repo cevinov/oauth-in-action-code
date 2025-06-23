@@ -57,6 +57,7 @@ app.post("/resource", cors(), getAccessToken, function(req, res){
 		res.json(resource);
 	} else {
 		res.status(401).end();
+		console.log("Error 401 unauthorized")
 	}
 	
 });
