@@ -185,7 +185,7 @@ app.post('/approve', function(req, res) {
 	
 			console.log("User %j", user);
 
-			var token_response = generateTokens(req, res, query.clientId, user, cscope);		
+			var token_response = generateTokens(req, res, query.clientId, user, cscope);
 
 			var urlParsed = url.parse(query.redirect_uri);
 			delete urlParsed.search; // this is a weird behavior of the URL library
@@ -236,7 +236,7 @@ var generateTokens = function (req, res, clientId, user, scope, nonce, generateR
 	if (refresh_token) {
 		console.log('and refresh token %s', refresh_token);
 	}
-	console.log('with scope %s', access_token, scope);
+	console.log('with scope %s', scope);
 
 	var cscope = null;
 	if (scope) {
@@ -287,7 +287,7 @@ app.post("/token", function(req, res){
 	if (req.body.grant_type == 'authorization_code') {
 		
 		var code = codes[req.body.code];
-		
+
 		if (code) {
 			delete codes[req.body.code]; // burn our code, it's been used
 			if (code.authorizationEndpointRequest.client_id == clientId) {
@@ -386,7 +386,7 @@ app.use('/', express.static('files/authorizationServer'));
 // clear the database
 nosql.clear();
 
-var server = app.listen(9001, 'localhost', function () {
+var server = app.listen(9001, '0.0.0.0', function () {
   var host = server.address().address;
   var port = server.address().port;
 

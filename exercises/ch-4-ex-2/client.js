@@ -146,9 +146,6 @@ app.get('/get_words', function (req, res) {
 		res.render('words', {words: '', timestamp: 0, result: 'noget'});
 		return;
 	}
-	
-	
-	
 });
 
 app.get('/add_word', function (req, res) {
@@ -193,14 +190,12 @@ app.get('/delete_word', function (req, res) {
 		res.render('words', {words: '', timestamp: 0, result: 'norm'});
 		return;
 	}
-	
-	
 });
 
 
 app.use('/', express.static('files/client'));
 
-var server = app.listen(9000, 'localhost', function () {
+var server = app.listen(9000, "0.0.0.0", function () {
   var host = server.address().address;
   var port = server.address().port;
   console.log('OAuth Client is listening at http://%s:%s', host, port);

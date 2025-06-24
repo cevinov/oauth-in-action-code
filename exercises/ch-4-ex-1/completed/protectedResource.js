@@ -52,6 +52,9 @@ var getAccessToken = function(req, res, next) {
 	      console.log('No matching token was found.');
 	    };
 	    req.access_token = token;
+
+		  // If we don't use in the `getAccessToken` middleware, **the request will hang indefinitely**
+		  // and never reach the final handler `next()`
 	    next();
 	    return;
 	  });
@@ -71,7 +74,7 @@ app.post("/resource", cors(), getAccessToken, function(req, res){
 	
 });
 
-var server = app.listen(9002, 'localhost', function () {
+var server = app.listen(9002, '0.0.0.0', function () {
   var host = server.address().address;
   var port = server.address().port;
 

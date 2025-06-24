@@ -88,7 +88,8 @@ app.get("/callback", function(req, res){
 				grant_type: 'authorization_code',
 				code: code,
 				redirect_uri: client.redirect_uri
-			});
+	});
+
 	var headers = {
 		'Content-Type': 'application/x-www-form-urlencoded',
 		'Authorization': 'Basic ' + Buffer.from(querystring.escape(client.client_id) + ':' + querystring.escape(client.client_secret)).toString('base64')
@@ -130,7 +131,7 @@ app.get('/fetch_resource', function(req, res) {
 		'Authorization': 'Bearer ' + access_token,
 		'Content-Type': 'application/x-www-form-urlencoded'
 	};
-	
+
 	var resource = request('POST', protectedResource,
 		{headers: headers}
 	);
@@ -144,8 +145,6 @@ app.get('/fetch_resource', function(req, res) {
 		res.render('error', {error: 'Server returned response code: ' + resource.statusCode});
 		return;
 	}
-	
-	
 });
 
 app.use('/', express.static('files/client'));
