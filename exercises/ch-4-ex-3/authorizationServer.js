@@ -134,6 +134,7 @@ app.post('/approve', function(req, res) {
 			var code = randomstring.generate(8);
 			
 			var user = req.body.user;
+			console.log("Req Body:", req.body)
 		
 			var scope = __.filter(__.keys(req.body), function(s) { return __.string.startsWith(s, 'scope_'); })
 				.map(function(s) { return s.slice('scope_'.length); });

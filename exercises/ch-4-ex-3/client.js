@@ -61,7 +61,7 @@ app.get('/authorize', function(req, res){
 	authorizeUrl.query.redirect_uri = client.redirect_uris[0];
 	authorizeUrl.query.state = state;
 	
-	console.log("redirect", url.format(authorizeUrl));
+	console.log("redirect", url.format(authorizeUrl), "---", authorizeUrl);
 	res.redirect(url.format(authorizeUrl));
 });
 
@@ -140,7 +140,6 @@ app.get('/produce', function(req, res) {
 		res.render('produce', {scope: scope, data: {fruits: [], veggies: [], meats: []}});
 		return;
 	}
-	
 });
 
 app.use('/', express.static('files/client'));
