@@ -63,6 +63,7 @@ var aliceFavorites = {
 	'music': ['techno', 'industrial', 'alternative']
 };
 
+
 var bobFavorites = {
 	'movies': ['An Unrequited Love', 'Several Shades of Turquoise', 'Think Of The Children'],
 	'foods': ['bacon', 'kale', 'gravel'],
@@ -71,7 +72,11 @@ var bobFavorites = {
 
 app.get('/favorites', getAccessToken, requireAccessToken, function(req, res) {
 	if (req.access_token.user == 'alice') {
-		res.json({user: 'Alice', favorites: aliceFavorites});
+		console.log("SCOPE: ", req.access_token.scope, aliceFavorites.music)
+		switch (req.access_token.scope[0]) {
+			case "music": res.json({user: 'Alice', favorites: aliceFavorites.music}); break;
+			default: res.json({user: "Alice", favorites: aliceFavorites}); break;
+		}
 	} else if (req.access_token.user == 'bob') {
 		res.json({user: 'Bob', favorites: bobFavorites});
 	} else {

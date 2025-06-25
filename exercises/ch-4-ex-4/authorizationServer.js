@@ -5,6 +5,8 @@ var randomstring = require("randomstring");
 var cons = require('consolidate');
 var nosql = require('nosql').load('database.nosql');
 var querystring = require('querystring');
+
+// library to serialize an object into a URL-encoded string format.
 var qs = require("qs");
 var __ = require('underscore');
 __.string = require('underscore.string');
@@ -105,7 +107,7 @@ app.get("/authorize", function(req, res){
 			res.redirect(url.format(urlParsed));
 			return;
 		}
-		
+
 		var reqid = randomstring.generate(8);
 		
 		requests[reqid] = req.query;

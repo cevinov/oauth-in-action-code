@@ -141,7 +141,6 @@ app.get('/favorites', function(req, res) {
 		res.render('favorites', {scope: scope, data: {user: '', favorites: {movies: [], foods: [], music: []}}});
 		return;
 	}
-	
 });
 
 app.use('/', express.static('files/client'));

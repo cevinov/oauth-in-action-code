@@ -54,13 +54,23 @@
 				  <li><%- v %>
 			  <% }); %>
 		  </ul>
+
 		  <p>Music:</p>
-		  <ul>
-			  <% _.each(data.favorites.music, function(v) { %>
-				  <li><%- v %>
-			  <% }); %>
-		  </ul>
-		  
+		  <% if (data.favorites.music) { %>
+			  <ul>
+				  <% _.each(data.favorites.music, function(v) { %>
+					  <li><%- v %>
+				  <% }); %>
+			  </ul>
+		  <% } else { %>
+			  <ul>
+				  <% _.each(data.favorites, function(v) { %>
+				  	<li><%- v %>
+						<% }); %>
+			  </ul>
+		  <% } %>
+
+
 		  <a href="/favorites" class="btn btn-default">Get Favorites</a>
 		  
       </div>
