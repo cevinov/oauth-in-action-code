@@ -1,0 +1,122 @@
+commit 38dc6ab4e5499e4052e51c94d1bc5feb7310c72e
+Author: coder (aider) <admin@vino0333.my.id>
+Date:   Thu Jun 26 10:53:16 2025 +0000
+
+    feat: Implement /authorize and /approve endpoints for OAuth flow
+
+diff --git a/exercises/ch-5-ex-1/authorizationServer.js b/exercises/ch-5-ex-1/authorizationServer.js
+index f6d6246..9689278 100644
+--- a/exercises/ch-5-ex-1/authorizationServer.js
++++ b/exercises/ch-5-ex-1/authorizationServer.js
+@@ -26,10 +26,12 @@ var authServer = {
+ 
+ // client information
+ var clients = [
+-
+-  /*
+-   * Enter client information here
+-   */
++	{
++		"client_id": "oauth-client-1",
++		"client_secret": "oauth-client-secret-1",
++		"redirect_uris": ["http://localhost:9000/callback"],
++		"scope": "foo bar"
++	}
+ ];
+ 
+ var codes = {};
+@@ -46,18 +48,81 @@ app.get('/', function(req, res) {
+ 
+ app.get("/authorize", function(req, res){
+ 	
+-	/*
+-	 * Process the request, validate the client, and send the user to the approval page
+-	 */
+-	
++	var client = getClient(req.query.client_id);
++
++	if (!client) {
++		console.log('Unknown client %s', req.query.client_id);
++		res.render('error', {error: 'Unknown client'});
++		return;
++	}
++
++	if (!__.contains(client.redirect_uris, req.query.redirect_uri)) {
++		console.log('Mismatched redirect URI, expected %s got %s', client.redirect_uris, req.query.redirect_uri);
++		res.render('error', {error: 'Invalid redirect URI'});
++		return;
++	}
++
++	var rscope = req.query.scope ? req.query.scope.split(' ') : undefined;
++	var cscope = client.scope ? client.scope.split(' ') : undefined;
++	if (cscope && rscope && !__.every(rscope, function(s) { return __.contains(cscope, s); })) {
++		// client asked for a scope it wasn't granted
++		var urlParsed = buildUrl(req.query.redirect_uri, {
++			error: 'invalid_scope'
++		});
++		res.redirect(urlParsed);
++		return;
++	}
++
++	if (req.query.response_type != 'code') {
++		var urlParsed = buildUrl(req.query.redirect_uri, {
++			error: 'unsupported_response_type'
++		});
++		res.redirect(urlParsed);
++		return;
++	}
++
++	var reqid = randomstring.generate(8);
++	requests[reqid] = req.query;
++
++	res.render('approve', {client: client, reqid: reqid, scope: rscope});
+ });
+ 
+ app.post('/approve', function(req, res) {
+ 
+-	/*
+-	 * Process the results of the approval page, authorize the client
+-	 */
+-	
++	var reqid = req.body.reqid;
++	var query = requests[reqid];
++	delete requests[reqid];
++
++	if (!query) {
++		res.render('error', {error: 'No matching authorization request'});
++		return;
++	}
++
++	if (req.body.approve) {
++		if (query.response_type == 'code') {
++			var code = randomstring.generate(8);
++			codes[code] = { request: query };
++
++			var urlParsed = buildUrl(query.redirect_uri, {
++				code: code,
++				state: query.state
++			});
++			res.redirect(urlParsed);
++			return;
++		} else {
++			var urlParsed = buildUrl(query.redirect_uri, {
++				error: 'unsupported_response_type'
++			});
++			res.redirect(urlParsed);
++			return;
++		}
++	} else {
++		var urlParsed = buildUrl(query.redirect_uri, {
++			error: 'access_denied'
++		});
++		res.redirect(urlParsed);
++		return;
++	}
+ });
+ 
+ app.post("/token", function(req, res){
+@@ -102,4 +167,3 @@ var server = app.listen(9001, "0.0.0.0", function () {
+ 
+   console.log('OAuth Authorization Server is listening at http://%s:%s', host, port);
+ });
+- 
