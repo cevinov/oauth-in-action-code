@@ -57,6 +57,7 @@ app.get("/authorize", function (req, res) {
   refresh_token = null;
   scope = null;
 
+  // explain line 64. AI!
   // Generate random string for state, preventing csrf attack
   state = randomstring.generate();
 
