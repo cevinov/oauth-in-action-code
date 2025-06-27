@@ -100,3 +100,545 @@
 
 # 2025-06-26 11:00:51.548067
 +/ask explain this in git show @@ -46,18 +48,81 @@
+
+# 2025-06-26 13:55:10.676903
++/code
+
+# 2025-06-26 13:55:39.689063
++/run mcpm-aider toolprompt
+
+# 2025-06-26 13:56:42.512012
++Y
+
+# 2025-06-26 13:57:05.930310
++/ask give high level design of SAML
+
+# 2025-06-26 14:11:05.797305
++/run mcpm-aider toolprompt
+
+# 2025-06-26 14:11:34.727973
++N
+
+# 2025-06-26 14:14:44.567803
++/run mcpm-aider toolprompt
+
+# 2025-06-26 14:15:01.226026
++N
+
+# 2025-06-26 14:15:02.847118
++/run mcpm-aider toolprompt
+
+# 2025-06-26 14:32:47.738078
++N
+
+# 2025-06-26 14:32:49.459037
++/run mcpm-aider toolprompt
+
+# 2025-06-26 14:32:55.587256
++Y
+
+# 2025-06-26 14:33:09.775354
++/ask give high level design of kerberos
+
+# 2025-06-26 14:45:41.349385
++/run mcpm-aider toolprompt
+
+# 2025-06-26 14:50:14.551731
++N
+
+# 2025-06-26 15:32:45.713833
++/run mcpm-aider toolprompt
+
+# 2025-06-26 15:32:54.990161
++Y
+
+# 2025-06-26 15:33:39.548615
++/ask please summarize about spring security from my google drive with folder name spring-security-docs
+
+# 2025-06-26 15:34:30.125295
++please continue explain about spring security
+
+# 2025-06-26 15:37:26.816812
++/ask get information about address or location from my all files in google drive
+
+# 2025-06-26 15:37:48.772058
++/ask get information about address or location from my all files in google drive, filename is addr
+
+# 2025-06-26 15:38:29.942324
++could you get the content of that file ?
+
+# 2025-06-26 15:38:47.047934
++could you get the content of that file, file called addr?
+
+# 2025-06-26 15:40:15.299389
++/run mcpm-aider toolprompt
+
+# 2025-06-26 15:40:24.973235
++Y
+
+# 2025-06-26 15:47:08.138722
++/run mcpm-aider toolprompt
+
+# 2025-06-26 15:47:15.983374
++Y
+
+# 2025-06-26 15:47:27.114711
++/ask get information about address or location from my all files in google drive, filename is addr its a docx
+
+# 2025-06-26 15:47:44.151496
++yes
+
+# 2025-06-26 15:48:15.211541
++is there any file called addr in vino folder?
+
+# 2025-06-26 15:49:20.200347
++how about file called addr.dox
+
+# 2025-06-26 15:49:28.326724
++yes
+
+# 2025-06-26 15:50:17.054837
++/run mcpm-aider toolprompt
+
+# 2025-06-26 15:50:25.208393
++Y
+
+# 2025-06-26 15:50:31.351485
++/clear
+
+# 2025-06-26 15:50:36.401244
++/clear 
+
+# 2025-06-26 15:52:49.764250
++/run mcpm-aider toolprompt
+
+# 2025-06-26 15:52:55.198406
++y
+
+# 2025-06-26 15:57:53.496564
++/run mcpm-aider toolprompt
+
+# 2025-06-26 15:57:57.552013
++Y
+
+# 2025-06-26 16:27:17.828731
++/run mcpm-aider toolprompt
+
+# 2025-06-26 16:27:24.262909
++n
+
+# 2025-06-26 16:28:28.124598
++/run mcpm-aider toolprompt
+
+# 2025-06-26 16:28:33.045687
++Y
+
+# 2025-06-26 16:44:11.727362
++/run mcpm-aider toolprompt
+
+# 2025-06-26 16:44:17.619639
++Y
+
+# 2025-06-26 16:44:45.924426
++/ask give me overview about spring security. Use context7
+
+# 2025-06-26 16:45:03.357849
++continue
+
+# 2025-06-26 16:45:42.556393
++yes that's right
+
+# 2025-06-26 16:46:00.845295
++okay please answer the question
+
+# 2025-06-26 16:46:16.860740
++/ask give me overview about spring security. Use context7
+
+# 2025-06-26 16:48:30.331956
++/ask give me an overview about spring security frameworks, how it work. Use context7
+
+# 2025-06-26 16:49:11.274415
++/ask give me an overview about spring security framework {"libraryName": "Spring Security"}. Use context7
+
+# 2025-06-26 16:49:23.714216
++and then ?
+
+# 2025-06-26 16:49:53.667951
++mcpm-aider call context7 resolve-library-id '{"libraryName": "Spring Security"}'
+
+# 2025-06-26 16:51:14.726752
++/run mcpm-aider toolprompt
+
+# 2025-06-26 16:51:18.798778
++Y
+
+# 2025-06-26 17:02:09.001417
++/run mcpm-aider toolprompt
+
+# 2025-06-26 17:02:18.243894
++Y
+
+# 2025-06-26 17:03:07.668984
++/ask give me an overview about spring security directly from https://docs.spring.io/spring-security/reference/index.html
+
+# 2025-06-26 17:03:10.457802
++Y
+
+# 2025-06-26 17:05:20.844043
++/run mcpm-aider toolprompt
+
+# 2025-06-26 17:05:36.475883
++Y
+
+# 2025-06-26 17:09:04.378606
++/ask how to implement SAML2 with spring security, refer to this document https://docs.spring.io/spring-security/reference/index.html
+
+# 2025-06-26 17:09:06.786722
++Y
+
+# 2025-06-26 17:09:48.854799
++/ask how to implement SAML2 with spring security, refer to this document https://docs.spring.io/spring-security/reference/index.html use brave search
+
+# 2025-06-26 17:09:50.473603
++Y
+
+# 2025-06-26 17:10:21.841782
++is there any result from brave search ?
+
+# 2025-06-26 17:11:06.287360
++https://docs.spring.io/spring-security/reference/servlet/saml2/index.html
+
+# 2025-06-26 17:11:07.978733
++Y
+
+# 2025-06-26 17:11:47.432326
++/ask what's the different between servlet apps and reactive apps in spring ?
+
+# 2025-06-26 17:12:14.760203
++is there any source ?
+
+# 2025-06-26 17:13:16.498745
++okay check this link: https://docs.spring.io/spring-security/reference/reactive/index.html and https://docs.spring.io/spring-security/reference/servlet/index.html
+
+# 2025-06-26 17:13:18.246901
++Y
+
+# 2025-06-26 17:15:18.702819
++how to implement SAML2 with spring security
+
+# 2025-06-26 17:15:34.136438
++https://docs.spring.io/spring-security/reference/servlet/saml2/index.html
+
+# 2025-06-26 17:15:35.829160
++Y
+
+# 2025-06-26 17:16:22.516113
++https://docs.spring.io/spring-security/reference/servlet/saml2/login/overview.html
+
+# 2025-06-26 17:16:24.265169
++Y
+
+# 2025-06-26 20:31:51.025857
++/ask hello world in ada programming language
+
+# 2025-06-26 20:32:14.411257
++whats the file extensions ?
+
+# 2025-06-26 20:32:25.060711
++n
+
+# 2025-06-27 04:38:10.686341
++N
+
+# 2025-06-27 04:39:47.564929
++/ask explain to me about this repo
+
+# 2025-06-27 04:40:54.936285
++/run mcpm-aider toolprompt
+
+# 2025-06-27 04:41:01.140724
++Y
+
+# 2025-06-27 04:42:22.217439
++/ask explain to me how token exchanges work between exercises/ch-5-ex-1/client.js, exercises/ch-5-ex-1/completed/authorizationServer.js and exercises/ch-5-ex-1/protectedResource.js
+
+# 2025-06-27 04:42:27.838729
++A
+
+# 2025-06-27 04:44:57.859265
++/code
+
+# 2025-06-27 04:45:06.942426
++/run mcpm-aider toolprompt
+
+# 2025-06-27 04:45:14.175981
++Y
+
+# 2025-06-27 04:45:53.310394
++is there any part that interesting and complex for you, from all that 3 files ?
+
+# 2025-06-27 04:46:50.826836
++yes
+
+# 2025-06-27 05:00:38.866939
++N
+
+# 2025-06-27 05:01:31.612600
++/ask explain to me what is kerberos give source for reference
+
+# 2025-06-27 05:02:48.585017
++/ask explain to me what is spring security give me source for reference
+
+# 2025-06-27 05:03:42.175902
++/code
+
+# 2025-06-27 05:03:48.050302
++/run mcpm-aider toolprompt
+
+# 2025-06-27 05:03:53.375163
++Y
+
+# 2025-06-27 05:03:58.347284
++are you using mcp ?
+
+# 2025-06-27 05:05:16.064311
++/run mcpm-aider toolprompt
+
+# 2025-06-27 05:05:22.455985
++Y
+
+# 2025-06-27 05:05:43.083273
++/code
+
+# 2025-06-27 05:05:51.308916
++/run mcpm-aider toolprompt
+
+# 2025-06-27 05:05:56.167213
++Y
+
+# 2025-06-27 05:06:31.490626
++/ask most useful linux tool command
+
+# 2025-06-27 05:08:41.944671
++/ask give detail explanation about quantum
+
+# 2025-06-27 05:10:31.380467
++/ask best skills for get good at investment create best portofolio, you can use mcp as I refer in mcp.txt
+
+# 2025-06-27 05:11:49.602532
++/ask best skills for get good at investment create best portofolio, you can use mcp as I refer in mcp.txt to answer my question give good detail answer
+
+# 2025-06-27 05:13:44.581780
++/code give code example implementation of JWT in C++, please use MCP tools I refer to help you answer this
+
+# 2025-06-27 05:20:51.997825
++Y
+
+# 2025-06-27 05:23:17.804921
++jwt_example.cpp:3:10: fatal error: openssl/hmac.h: No such file or directory
++jwt_example.cpp:3:10: fatal error: openssl/hmac.h: No such file or directory
++/ask jwt_example.cpp:3:10: fatal error: openssl/hmac.h: No such file or directory
+
+# 2025-06-27 06:15:38.081660
++/clear
+
+# 2025-06-27 08:11:51.877610
++/cl
+
+# 2025-06-27 08:11:54.641073
++/clear
+
+# 2025-06-27 08:12:13.398776
++/reset
+
+# 2025-06-27 08:12:51.394431
++/map
+
+# 2025-06-27 08:13:07.534034
++/ls
+
+# 2025-06-27 08:13:35.574997
++/ask
+
+# 2025-06-27 08:14:25.036713
++how to build High frequency trading code, is it better with c++, rust or go. Please refer to mcp to help you answer this
+
+# 2025-06-27 08:16:49.430337
++how to build High frequency trading code, is it better with c++, rust or go. Use sequentialthinking mcp
+
+# 2025-06-27 08:18:03.818281
++/run mcpm-aider toolprompt
+
+# 2025-06-27 08:18:08.513766
++Y
+
+# 2025-06-27 08:18:15.637642
++/clear
+
+# 2025-06-27 08:18:17.091228
++/run mcpm-aider toolprompt
+
+# 2025-06-27 08:18:21.565668
++Y
+
+# 2025-06-27 08:18:28.578218
++how to build High frequency trading code, is it better with c++, rust or go. Use sequentialthinking mcp
+
+# 2025-06-27 08:21:34.524833
++so what you prefer when building HFT ?
+
+# 2025-06-27 09:09:27.370412
++What skills do I need to build HFT 
+
+# 2025-06-27 09:12:44.854462
++hello world in assembly
+
+# 2025-06-27 09:13:08.289866
++/clear
+
+# 2025-06-27 09:17:39.854247
++/run mcpm-aider toolprompt
+
+# 2025-06-27 09:17:46.744139
++Y
+
+# 2025-06-27 09:18:10.056351
++/ask most difficult data structure algorithm
+
+# 2025-06-27 09:20:41.439957
++/s
+
+# 2025-06-27 09:20:43.992144
++/save
+
+# 2025-06-27 09:21:17.348972
++/save .aider.r1.md
+
+# 2025-06-27 09:22:57.598813
++/run mcpm-aider toolprompt
+
+# 2025-06-27 09:23:03.038945
++Y
+
+# 2025-06-27 09:23:58.427966
++why is that tree is a most complex DSA ?
+
+# 2025-06-27 09:24:19.718389
++why is that tree van emde is a most complex DSA ?
+
+# 2025-06-27 09:25:23.777022
++give example implementation of it
+
+# 2025-06-27 09:30:19.032643
++Y
+
+# 2025-06-27 09:33:49.065323
++/ask most difficult algorithmm 
+
+# 2025-06-27 09:34:48.143849
++/clear
+
+# 2025-06-27 09:35:06.295691
++give most difficult np problem
+
+# 2025-06-27 09:35:50.869628
++/code
+
+# 2025-06-27 09:36:12.879485
++/ask
+
+# 2025-06-27 09:36:30.388234
++explain to me hardest algorithm question in the world
+
+# 2025-06-27 09:38:25.928028
++/clear
+
+# 2025-06-27 09:38:47.482590
++how to implement OAUTH2 with spring security, give me detail step by step
+
+# 2025-06-27 09:41:10.222368
++where do you get this information, is there any link for references ?
+
+# 2025-06-27 09:42:27.397457
++high  level design of spring frameworks, use sequentialthinking mcp server
+
+# 2025-06-27 09:43:13.553260
++do you aware what file I'm refer to you as your documentation ?
+
+# 2025-06-27 09:44:42.793421
++so do you aware of MCP tools ?
+
+# 2025-06-27 09:45:43.597067
++search spring security documentation using MCP tools
+
+# 2025-06-27 09:46:00.793088
++yes
+
+# 2025-06-27 09:47:20.148315
++latest version of spring boot and spring security ?
+
+# 2025-06-27 09:49:32.872650
++is it for the latest stable version ?
+
+# 2025-06-27 09:51:18.160932
++it's wrong the latest stable version for spring boot is 3.5.3 and spring security 6.5.1
+
+# 2025-06-27 09:53:03.884133
++dont roll your auth, what's your opinion about that ?
+
+# 2025-06-27 09:53:39.398562
++/drop
+
+# 2025-06-27 09:53:42.626563
++/clear
+
+# 2025-06-27 09:53:44.294078
++/reset
+
+# 2025-06-27 09:54:10.894714
++are you aware of the MCP tools ?
+
+# 2025-06-27 09:55:10.729942
++/ask please explain to me about quantum in finance
+
+# 2025-06-27 09:55:48.327114
++are you aware of the MCP tools ?
+
+# 2025-06-27 09:56:21.775213
++/ask please explain to me about quantum in finance
+
+# 2025-06-27 09:58:09.733194
++yes
+
+# 2025-06-27 09:58:19.416273
++Y
+
+# 2025-06-27 09:58:19.425906
++/run mcpm-aider call @modelcontextprotocol/brave-search brave_web_search '{"query": "quantum finance case studies", "count": 10}'
+
+# 2025-06-27 09:58:19.426066
++/run mcpm-aider call @modelcontextprotocol/brave-search brave_web_search '{"query": "quantum finance case studies", "count": 10}'
+
+# 2025-06-27 09:58:33.348635
++Y
+
+# 2025-06-27 09:58:53.940738
++continue
+
+# 2025-06-27 10:00:44.036818
++is there any skill sets do I need to have to use quantum, to help me analyze stocks and create better portofolio
+
+# 2025-06-27 10:02:27.523127
++sure
+
+# 2025-06-27 10:02:34.898923
++Y
+
+# 2025-06-27 10:02:34.906960
++/run mcpm-aider call @modelcontextprotocol/brave-search brave_web_search '{"query": "quantum finance learning resources courses tutorials books", "count": 10}'
+
+# 2025-06-27 10:02:34.907109
++/run mcpm-aider call @modelcontextprotocol/brave-search brave_web_search '{"query": "quantum finance learning resources courses tutorials books", "count": 10}'
+
+# 2025-06-27 10:12:04.461261
++Y
