@@ -63,18 +63,29 @@ app.get("/authorize", function (req, res) {
     res.render("error", { error: "Invalid redirect URI" });
     return;
   } else {
+    // create a unique identifier for the current authorization request.
     var reqid = randomstring.generate(8);
 
+    // This line stores the query parameters of the incoming request (which includes the client_id, redirect_uri, etc.) in the requests object, using the generated reqid as the key.
     requests[reqid] = req.query;
 
+    // renders the "approve" view (an HTML template) and passes two variable
+    // in this case client information that we looked up as well as the randomized key from earlier.
     res.render("approve", { client: client, reqid: reqid });
     return;
   }
 });
 
 app.post("/approve", function (req, res) {
+  // Fetches the reqid value from the POST request body.
+  // This ID was generated earlier during the authorization request and stored in the requests object.
   var reqid = req.body.reqid;
+
+  // Retrieves the original authorization request data from the requests object using reqid as the key.
+  // The query variable now contains critical OAuth parameters like client_id, redirect_uri, and response_type.
   var query = requests[reqid];
+
+  // Ensure one-time use of the authorization request
   delete requests[reqid];
 
   if (!query) {
