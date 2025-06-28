@@ -116,9 +116,12 @@ app.post("/approve", function (req, res) {
 });
 
 app.post("/token", function (req, res) {
+  //extracts the Authorization header from an incoming HTTP request
   var auth = req.headers["authorization"];
+
+  // Decodes it from Base64 if it's in Basic auth format.
+  // Extracts the id and secret from the decoded string.
   if (auth) {
-    // check the auth header
     var clientCredentials = decodeClientCredentials(auth);
     var clientId = clientCredentials.id;
     var clientSecret = clientCredentials.secret;
