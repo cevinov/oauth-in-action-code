@@ -16,6 +16,7 @@ app.set("json spaces", 4);
 app.use("/", express.static("files/protectedResource"));
 app.use(cors());
 
+// explain the resource. AI!
 var resource = {
   name: "Protected Resource",
   description: "This data has been protected by OAuth 2.0",
