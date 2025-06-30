@@ -171,16 +171,17 @@ app.post("/token", function (req, res) {
 
         console.log("Issuing access token %s", access_token);
 
+        // Constructs a JSON response containing OAuth 2.0 tokens and sends it back to the client.
         var token_response = {
           access_token: access_token,
           token_type: "Bearer",
           refresh_token: refresh_token,
         };
 
+        // Using res.status() and res.json() to send proper HTTP responses with JSON payloads.
         res.status(200).json(token_response);
         console.log("Issued tokens for code %s", req.body.code);
-
-        return;
+        return; // Prevent further processing after sending the response
       } else {
         console.log(
           "Client mismatch, expected %s got %s",
