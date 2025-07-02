@@ -58,7 +58,7 @@ app.get("/authorize", function (req, res) {
     console.log(
       "Mismatched redirect URI, expected %s got %s",
       client.redirect_uris,
-      req.query.redirect_uri
+      req.query.redirect_uri,
     );
     res.render("error", { error: "Invalid redirect URI" });
     return;
@@ -151,7 +151,7 @@ app.post("/token", function (req, res) {
     console.log(
       "Mismatched client secret, expected %s got %s",
       client.client_secret,
-      clientSecret
+      clientSecret,
     );
     res.status(401).json({ error: "invalid_client" });
     return;
@@ -186,7 +186,7 @@ app.post("/token", function (req, res) {
         console.log(
           "Client mismatch, expected %s got %s",
           code.request.client_id,
-          clientId
+          clientId,
         );
         res.status(400).json({ error: "invalid_grant" });
         return;
@@ -197,14 +197,23 @@ app.post("/token", function (req, res) {
       return;
     }
   } else if (req.body.grant_type == "refresh_token") {
+    // The .make() method is used to construct the query using a builder pattern. It takes a function as an argument, and this function receives a builder object. This builder object is then used to define the specifics of the query.
     nosql.one().make(function (builder) {
+      // Inside the make function, the .where() method is called on the builder object. This method adds a condition to the query, filtering the documents.
       builder.where("refresh_token", req.body.refresh_token);
+
+      //  sets a callback function to be executed after the query built by the builder completes. This function receives two arguments: err, which contains any error that occurred during the query, and token, which is the result of the query—specifically, the record matching the refresh token.
+      //  Inside this callback, the code checks if a token was found, handles errors, and proceeds to generate a new access token if the token exists and belongs to the same client
       builder.callback(function (err, token) {
         if (token) {
           console.log(
             "We found a matching refresh token: %s",
-            req.body.refresh_token
+            req.body.refresh_token,
           );
+
+          // Now we have to make sure that the token was issued to the client that authenticated
+          // at the token endpoint. If we don’t make this check, then a malicious client could
+          // steal a good client’s refresh token and use it to get new
           if (token.client_id != clientId) {
             nosql.remove().make(function (builder) {
               builder.where("refresh_token", req.body.refresh_token);
@@ -271,6 +280,6 @@ var server = app.listen(9001, "0.0.0.0", function () {
   console.log(
     "OAuth Authorization Server is listening at http://%s:%s",
     host,
-    port
+    port,
   );
 });
