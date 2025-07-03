@@ -28,7 +28,7 @@ var authServer = {
 	introspectionEndpoint: 'http://localhost:9001/introspect'
 };
 
-
+// explain this. AI!
 var getAccessToken = function(req, res, next) {
 	// check the auth header first
 	var auth = req.headers['authorization'];
