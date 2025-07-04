@@ -122,6 +122,9 @@ app.post("/approve", function (req, res) {
       });
       res.redirect(urlParsed);
       return;
+
+      //  This triggers the Implicit Grant flow, where the server directly issues an access token to the client without an authorization code. The server will generate an access token, store it, and then redirect the user-agent back to the client with the token included in the URL fragment.
+      //  This flow is typically used for client-side applications like single-page apps, where tokens are returned directly to the browser for use in subsequent API requests
     } else if (query.response_type == "token") {
       var rscope = getScopesFromForm(req.body);
       var client = getClient(query.client_id);
