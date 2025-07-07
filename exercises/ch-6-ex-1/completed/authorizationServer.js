@@ -218,6 +218,7 @@ app.post("/token", function (req, res) {
     return;
   }
 
+  // Explain line 222. AI!
   if (req.body.grant_type == "authorization_code") {
     var code = codes[req.body.code];
 
